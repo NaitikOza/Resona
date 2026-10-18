@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: #f7faf9;
+  --foreground: #17323a;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at 15% 5%, rgba(123, 216, 199, 0.13), transparent 34rem),
+    #f7faf9;
+  font-family: Inter, "Avenir Next", "Segoe UI", sans-serif;
+}
+button, input, select, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(38, 159, 142, 0.35);
+  outline-offset: 3px;
+}
+::selection { background: #b2eadc; color: #17323a; }
+
+@layer components {
+  .panel { @apply rounded-2xl border border-slate-200/80 bg-white shadow-panel; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.18em] text-teal-700; }
+  .button-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:-translate-y-0.5 hover:bg-teal-900 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0; }
+  .button-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:border-teal-400 hover:bg-teal-50 disabled:cursor-not-allowed disabled:opacity-50; }
+  .button-ghost { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-ink; }
+  .field { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-3 text-sm text-ink shadow-sm placeholder:text-slate-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-100; }
+  .status-pill { @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em]; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
+

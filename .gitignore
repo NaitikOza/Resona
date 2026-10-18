@@ -1,0 +1,42 @@
+# JavaScript
+node_modules/
+.next/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local configuration
+.env
+.env.local
+!.env.example
+
+# Resona private/local artifacts
+local_data/**
+!local_data/.gitkeep
+*.sqlite
+*.sqlite3
+*.db
+*.wav
+*.mp3
+*.m4a
+*.webm
+*.gguf
+*.bin
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Internal project guidance (kept local, never published)
+/AGENTS.md
+/PLAN.md
+

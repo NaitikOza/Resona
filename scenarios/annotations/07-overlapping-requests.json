@@ -1,0 +1,16 @@
+{
+  "slug": "07-overlapping-requests",
+  "title": "Access and equipment",
+  "description": "A short case covering access and equipment.",
+  "simulated": true,
+  "segments": [
+    {"start_ms": 0, "end_ms": 1900, "speaker": "Team Leader", "text": "Get an IV."},
+    {"start_ms": 2100, "end_ms": 4400, "speaker": "Physician", "text": "Please place another IV."}
+  ],
+  "expected_events": [
+    {"action": "establish_iv_access", "state": "REQUESTED", "evidence_segment": 0},
+    {"action": "establish_iv_access", "state": "REQUESTED", "evidence_segment": 1}
+  ],
+  "negative_control": "The requests are separate event records even though they share an action type."
+}
+

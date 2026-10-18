@@ -1,0 +1,16 @@
+{
+  "name": "resona",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "dev:web": "pnpm --dir apps/web dev",
+    "build:web": "pnpm --dir apps/web build",
+    "test:web": "pnpm --dir apps/web test",
+    "typecheck:web": "pnpm --dir apps/web typecheck",
+    "lint:web": "pnpm --dir apps/web lint",
+    "test:api": "cd apps/api && uv run pytest",
+    "test": "pnpm test:web && pnpm test:api"
+  }
+}
+

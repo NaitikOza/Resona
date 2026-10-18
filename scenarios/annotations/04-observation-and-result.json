@@ -1,0 +1,16 @@
+{
+  "slug": "04-observation-and-result",
+  "title": "Observations and imaging",
+  "description": "A short case with observations and an imaging result.",
+  "simulated": true,
+  "segments": [
+    {"start_ms": 0, "end_ms": 2200, "speaker": "Nurse", "text": "The patient is awake and alert."},
+    {"start_ms": 4500, "end_ms": 7800, "speaker": "Physician", "text": "CT result is back, no intracranial bleed reported."}
+  ],
+  "expected_events": [
+    {"action": "record_observation", "state": "REPORTED", "evidence_segment": 0},
+    {"action": "obtain_imaging", "state": "REPORTED", "evidence_segment": 1}
+  ],
+  "annotation_note": "The spoken imaging result is a verbal report, not direct image interpretation by Resona."
+}
+
