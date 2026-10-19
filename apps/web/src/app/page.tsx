@@ -19,6 +19,12 @@ const steps = [
   },
 ];
 
+const previewStates = {
+  REQUESTED: { label: "Requested", className: "border-yellow-200 bg-yellow-50 text-yellow-800" },
+  IN_PROGRESS: { label: "In progress", className: "border-sky-200 bg-sky-50 text-sky-800" },
+  COMPLETED: { label: "Completed", className: "border-teal-200 bg-teal-50 text-teal-800" },
+};
+
 export default function HomePage() {
   return (
     <main>
@@ -53,10 +59,10 @@ export default function HomePage() {
             <div className="overflow-hidden rounded-[28px] border border-white/80 bg-white shadow-soft">
               <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
                 <div>
-                  <p className="text-xs font-semibold text-slate-400">EMERGENCY CASE 24</p>
-                  <p className="mt-1 font-semibold text-ink">Live documentation</p>
+                  <p className="text-xs font-semibold text-slate-500">FICTIONAL SIMULATION</p>
+                  <p className="mt-1 font-semibold text-ink">Documentation preview</p>
                 </div>
-                <span className="status-pill border-red-200 bg-red-50 text-red-700"><span className="size-2 animate-pulse rounded-full bg-red-500" /> Recording</span>
+                <span className="status-pill border-slate-200 bg-slate-50 text-slate-600">Sample</span>
               </div>
               <div className="grid gap-0 md:grid-cols-2">
                 <div className="border-b border-slate-200 p-5 md:border-b-0 md:border-r">
@@ -70,12 +76,13 @@ export default function HomePage() {
                 <div className="bg-slate-50/70 p-5">
                   <span className="eyebrow">Timeline</span>
                   <div className="mt-5 space-y-3">
-                    <TimelinePreview time="00:04" text="IV access" />
-                    <TimelinePreview time="00:09" text="IV access" />
-                    <TimelinePreview time="00:15" text="Measurement recorded" />
+                    <TimelinePreview time="00:04" text="IV access" state="REQUESTED" />
+                    <TimelinePreview time="00:09" text="IV access" state="IN_PROGRESS" />
+                    <TimelinePreview time="00:15" text="IV access" state="COMPLETED" />
                   </div>
                 </div>
               </div>
+              <p className="border-t border-slate-200 px-5 py-3 text-xs text-slate-500">Illustrative events · Unverified until reviewed</p>
             </div>
           </div>
         </div>
@@ -106,6 +113,16 @@ export default function HomePage() {
   );
 }
 
-function TimelinePreview({ time, text }: { time: string; text: string }) {
-  return <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm"><span className="font-mono text-[11px] text-slate-400">{time}</span><p className="mt-2 text-sm font-semibold text-ink">{text}</p></div>;
+function TimelinePreview({ time, text, state }: { time: string; text: string; state: keyof typeof previewStates }) {
+  const { label, className } = previewStates[state];
+
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="font-mono text-[11px] text-slate-500">{time}</span>
+        <span className={`status-pill ${className}`}>{label}</span>
+      </div>
+      <p className="mt-2 text-sm font-semibold text-ink">{text}</p>
+    </div>
+  );
 }
